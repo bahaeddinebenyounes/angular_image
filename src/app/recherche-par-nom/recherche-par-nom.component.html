@@ -1,0 +1,38 @@
+<div class="container">
+    <form class="form-inline">
+        <div class="form-group mx-sm-3 mb-2 mt-2"> 
+            <label>Nom Produit en tapant</label> 
+            <input 
+                #nom 
+                [(ngModel)]="searchTerm" 
+                (keyup)="onKeyUp(searchTerm)" 
+                class="form-control" 
+                name="searchTerm"> 
+        </div>
+    </form>
+    
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom</th>
+                        <th>Prix</th>
+                        <th>Date Création</th>
+                        <th>Type Vetements</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let vetement of vetements">
+                        <td>{{vetement.idVetemnt}}</td>
+                        <td>{{vetement.nomVetement}}</td>
+                        <td>{{vetement.prixVetement}}</td>
+                        <td>{{vetement.dateVetement | date:'dd/MM/yyyy'}}</td>
+                        <td>{{vetement.type.nomType}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

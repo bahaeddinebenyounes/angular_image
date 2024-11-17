@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="card shadow mb-4">
+      <div class="card-body">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Nom</th>
+              <th>Prix</th>
+              <th>Date Création</th>
+              <th>Type Vetements</th>
+              <th>Actions</th>
+              <th>Image</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let vet of vetements">
+              <td>{{ vet.idVetemnt }}</td>
+              <td>{{ vet.nomVetement }}</td>
+              <td>{{ vet.prixVetement }}</td>
+              <td>{{ vet.dateVetement | date: 'dd/MM/yyyy' }}</td>
+              <td>{{ vet.type?.nomType || 'No Type Available' }}</td>
+              <td>
+                <img class="card-img-top img-responsive" 
+                     [src]="vet.imageStr" 
+                     style="height:50px;width:100px">
+              </td>
+              
+              
+              
+              <td>
+                <a *ngIf="authService.isAdmin()" class="btn btn-danger" (click)="supprimervetements(vet)">
+                  Supprimer
+                </a>
+                <a *ngIf="authService.isAdmin()" class="btn btn-success" [routerLink]="['/updatevetements', vet.idVetemnt]">
+                  Modifier
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  

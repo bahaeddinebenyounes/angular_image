@@ -1,0 +1,41 @@
+<div class="container">
+    <div>
+        <h2>Ajouter un vetements :</h2>
+    </div>
+    <form>
+        <div hidden class="col-sm-2 col-md-2 col-lg-2">
+            <label>ID vetements</label>
+            <input type="text" [(ngModel)]="newvetements.idVetemnt" name="idVetemnt" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Nom de marque vetements</label>
+            <input type="text" [(ngModel)]="newvetements.nomVetement" name="nomVetement" class="form-control">
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label>Prix de vetements</label> <input type="number" [(ngModel)]="newvetements.prixVetement"
+                name="prixVetement" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Date création de vetements</label> <input type="date" [(ngModel)]="newvetements.dateVetement"
+                name="dateVetement" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4"> <label>type vetements</label> <select class="form-control form-control-lg"
+                id="idType" name="idType" [(ngModel)]="newIdType">
+                <option *ngFor="let cat of type" [value]="cat.idType"> {{cat.nomType}} </option>
+            </select> </div> 
+            <div class="col-sm-16 col-md-16 col-lg-16"> 
+                <label class="mb-2">Image :</label> 
+                <input type="file" (change)="onImageUpload($event)" 
+name="logo" class="form-control"> 
+            </div> 
+            <div class="col-sm-16 col-md-16 col-lg-16"> 
+                <img [src]="imagePath" class="card-img-top img-fluid rounded-start" 
+              style="width: 500px; height: 300px" /> 
+                </div> 
+        <div class="mt-2"> <button type="submit" (click)="addvetement()" class="btn btn-success">Ajouter</button>
+        </div>
+        <div>
+            <h3>{{message}}</h3>
+        </div>
+    </form>
+</div>
